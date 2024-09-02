@@ -6,9 +6,10 @@
 }:
 {
   imports = [
-    ./budgie.nix
+    # ./budgie.nix
     # ./cinnamon.nix
     # ./xmodan.nix
+    ./cosmic.nix
   ];
   services = {
     xserver = {

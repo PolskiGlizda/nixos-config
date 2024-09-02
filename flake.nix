@@ -13,6 +13,10 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
+    nixos-cosmic = {
+      url = "github:lilyinstarlight/nixos-cosmic";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     {
@@ -20,6 +24,7 @@
       nixpkgs,
       unstable,
       home-manager,
+      nixos-cosmic,
       ...
     }:
     let
@@ -41,7 +46,16 @@
             };
             inherit pkgs-unstable;
           };
-          modules = [ ./configuration.nix ];
+          modules = [
+            {
+              nix.settings = {
+                substituters = [ "https://cosmic.cachix.org/" ];
+                trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+              };
+            }
+            nixos-cosmic.nixosModules.default
+            ./configuration.nix
+          ];
         };
       };
       homeConfigurations = {
