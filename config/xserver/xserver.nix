@@ -5,7 +5,7 @@
   ...
 }:
 {
-  modules = [
+  imports = [
     # ./budgie.nix
     ./cinnamon.nix
   ];
