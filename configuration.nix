@@ -10,7 +10,6 @@
 }:
 let
 in
-# unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
 {
   nix.settings.experimental-features = [
     "nix-command"
@@ -20,24 +19,15 @@ in
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./packages/system/packages.nix
+    ./packages/system/sh.nix
+    ./config/boot.nix
+    ./config/network.nix
+    ./config/xserver.nix
+    ./config/sound.nix
+    ./config/users.nix
   ];
-  boot.kernelPackages = pkgs-unstable.linuxPackages_latest;
-
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  networking.hostName = "FilLAP"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-
-  # Set your time zone.
+  
+    # Set your time zone.
   time.timeZone = "Europe/Warsaw";
 
   # Select internationalisation properties.
@@ -55,73 +45,21 @@ in
     LC_TIME = "pl_PL.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the Budgie Desktop environment.
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.desktopManager.budgie.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "pl";
-    variant = "";
-  };
-
   # Configure console keymap
   console.keyMap = "pl2";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
-
+ 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.filip = {
-    isNormalUser = true;
-    description = "Filip";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
-    packages = with pkgs; [
-      #  thunderbird
-    ];
-  };
-
-  # Install firefox.
-  programs.firefox.enable = true;
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.shells = with pkgs; [
-    bash
-    zsh
-    fish
-  ];
-  users.defaultUserShell = pkgs.bash;
-  users.users.filip.shell = pkgs.fish;
-  programs.zsh.enable = true;
-  programs.fish.enable = true;
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

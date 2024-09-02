@@ -27,6 +27,7 @@ in
       jetbrains.goland
       jetbrains.phpstorm
       lsd
+      firefox
     ])
     ++ (with pkgs-unstable; [ neovim ]);
 }
