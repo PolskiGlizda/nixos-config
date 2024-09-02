@@ -2,17 +2,25 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, pkgs-unstable, ... }:
-let 
-  # unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
-  unstable = pkgs-unstable;
-in
 {
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  config,
+  pkgs,
+  pkgs-unstable,
+  ...
+}:
+let
+in
+# unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+{
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./packages/system/packages.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -88,9 +96,12 @@ in
   users.users.filip = {
     isNormalUser = true;
     description = "Filip";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -101,28 +112,11 @@ in
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-  	# home-manager
-	vim
-	wget
-	unstable.neovim
-	kitty
-	ranger
-	fzf
-	tmux
-	eza
-	fastfetch
-	git
-	lua
-	nerdfonts
-	nodejs_22
-	go
-	python3
-	jetbrains.goland
-	jetbrains.phpstorm
-	lsd
+  environment.shells = with pkgs; [
+    bash
+    zsh
+    fish
   ];
-  environment.shells = with pkgs; [ bash zsh fish ];
   users.defaultUserShell = pkgs.bash;
   users.users.filip.shell = pkgs.fish;
   programs.zsh.enable = true;
