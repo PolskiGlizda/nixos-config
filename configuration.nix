@@ -21,6 +21,7 @@ in
     ./hardware-configuration.nix
     ./packages/system/packages.nix
   ];
+  boot.kernelPackages = pkgs-unstable.linuxPackages_latest;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
