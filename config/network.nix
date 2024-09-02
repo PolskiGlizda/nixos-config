@@ -6,7 +6,7 @@
 }:
 {
   networking = {
-    hostname = "FilLAP";
+    hostName = "FilLAP";
     networkmanager = {
       enable = true;
     };

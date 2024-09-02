@@ -21,9 +21,9 @@
         budgie = {
           enable = true;
         };
-        cinnamon = {
-            enable = true;
-            };
+        # cinnamon = {
+        #   enable = true;
+        # };
       };
     };
   };

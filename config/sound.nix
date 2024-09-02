@@ -5,7 +5,8 @@
   ...
 }:
 {
-  hardware.pulseauadio.enable = false;
+  hardware.pulseaudio.enable = false;
+  # hardware.pulseauadio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;

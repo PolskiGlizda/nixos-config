@@ -25,8 +25,7 @@ in
     ./config/xserver.nix
     ./config/sound.nix
     ./config/users.nix
-  ];
-  
+  ]; 
     # Set your time zone.
   time.timeZone = "Europe/Warsaw";
 
