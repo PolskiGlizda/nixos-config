@@ -28,6 +28,7 @@ in
       jetbrains.phpstorm
       lsd
       firefox
+      dmenu
     ])
     ++ (with pkgs-unstable; [ neovim ]);
 }

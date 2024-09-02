@@ -25,6 +25,7 @@ in
     ./config/xserver/xserver.nix
     ./config/sound.nix
     ./config/users.nix
+    ./packages/system/hyprland.nix
   ]; 
     # Set your time zone.
   time.timeZone = "Europe/Warsaw";

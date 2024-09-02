@@ -19,5 +19,6 @@ in
     gopls
     emmet-language-server
     htmx-lsp
+    haskell-language-server
   ];
 }

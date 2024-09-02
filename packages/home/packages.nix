@@ -13,6 +13,7 @@ in
       gh
       grc
       bat
+      ghc
     ])
     ++ (with unstable; [ lazygit ]);
 }
