@@ -7,8 +7,8 @@
 {
   services.desktopManager.cosmic = {
     enable = true;
-    cosmic-greeter = {
-      enable = true;
-    };
+  };
+  services.displayManager.cosmic-greeter = {
+    enable = true;
   };
 }
