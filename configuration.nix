@@ -26,6 +26,7 @@ in
     ./config/sound.nix
     ./config/users.nix
     ./packages/system/hyprland.nix
+    ./packages/system/nvidia.nix
   ]; 
     # Set your time zone.
   time.timeZone = "Europe/Warsaw";

@@ -8,7 +8,7 @@
   imports = [
     # ./budgie.nix
     ./cinnamon.nix
-    ./xmodan.nix
+    # ./xmodan.nix
   ];
   services = {
     xserver = {
