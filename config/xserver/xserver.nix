@@ -6,8 +6,8 @@
 }:
 {
   imports = [
-    # ./budgie.nix
-    ./cinnamon.nix
+    ./budgie.nix
+    # ./cinnamon.nix
     # ./xmodan.nix
   ];
   services = {

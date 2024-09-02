@@ -25,7 +25,7 @@ in
     ./config/xserver/xserver.nix
     ./config/sound.nix
     ./config/users.nix
-    ./packages/system/hyprland.nix
+    # ./packages/system/hyprland.nix
     ./packages/system/nvidia.nix
   ]; 
     # Set your time zone.
