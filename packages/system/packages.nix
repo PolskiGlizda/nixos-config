@@ -5,14 +5,12 @@
   ...
 }:
 let
-  unstable = pkgs-unstable;
 in
 {
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = (with pkgs; [
     # home-manager
     vim
     wget
-    unstable.neovim
     kitty
     ranger
     fzf
@@ -28,5 +26,10 @@ in
     jetbrains.goland
     jetbrains.phpstorm
     lsd
-  ];
+  ])
+  (
+  with pkgs-unstable
+  ;[
+  neovim
+  ]);
 }

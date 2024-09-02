@@ -26,6 +26,7 @@
       system = "x86_64-linux";
       lib = nixpkgs.lib;
       pkgs = nixpkgs.legacyPackages.${system};
+      pkgs-unstable = unstable.legacyPackages.${system};
     in
     {
       nixosConfigurations = {
@@ -38,12 +39,7 @@
                 allowUnfree = true;
               };
             };
-            pkgs-unstable = import unstable {
-              inherit system;
-              config = {
-                allowUnfree = true;
-              };
-            };
+            inherit pkgs-unstable;
           };
           modules = [ ./configuration.nix ];
         };
