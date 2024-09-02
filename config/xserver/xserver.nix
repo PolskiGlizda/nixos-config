@@ -5,6 +5,10 @@
   ...
 }:
 {
+  modules = [
+    # ./budgie.nix
+    ./cinnamon.nix
+  ];
   services = {
     xserver = {
       enable = true;
@@ -16,14 +20,6 @@
         lightdm = {
           enable = true;
         };
-      };
-      desktopManager = {
-        budgie = {
-          enable = true;
-        };
-        # cinnamon = {
-        #   enable = true;
-        # };
       };
     };
   };
