@@ -26,6 +26,10 @@ in
       python3
       jetbrains.goland
       jetbrains.phpstorm
+      jetbrains.webstorm
+      jetbrains.clion
+      jetbrains.rider
+      jetbrains.rust-rover
       lsd
       firefox
       dmenu
