@@ -1,8 +1,13 @@
-{config, pkgs, pkgs-unstable, ...}:
 {
-    programs.hyprland = {
-        enable = true;
-        xwayland.enable = true;
-        package = pkgs-unstable.hyprland;
-        };
-    }
+  config,
+  pkgs,
+  pkgs-unstable,
+  ...
+}:
+{
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+    package = pkgs-unstable.hyprland;
+  };
+}
