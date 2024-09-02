@@ -9,8 +9,10 @@ let
 in
 {
   home.packages = with pkgs; [
-    gh
-    grc
-    bat
+    fishPlugins.done
+    fishPlugins.fzf
+    fishPlugins.forgit
+    fishPlugins.hydro
+    fishPlugins.grc
   ];
 }

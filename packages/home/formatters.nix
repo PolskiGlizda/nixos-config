@@ -9,8 +9,9 @@ let
 in
 {
   home.packages = with pkgs; [
-    gh
-    grc
-    bat
+    stylua
+    gofumpt
+    prettierd
+    nixfmt-rfc-style
   ];
 }

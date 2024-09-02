@@ -6,7 +6,14 @@ in
   # manage.
   home.username = "filip";
   home.homeDirectory = "/home/filip";
-  imports = [ ./config/sh.nix ];
+  imports = [
+    ./config/sh.nix
+    ./config/env.nix
+    ./packages/home/packages.nix
+    ./packages/home/lsp.nix
+    ./packages/home/formatters.nix
+    ./packages/home/fishplugins.nix
+  ];
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -18,32 +25,7 @@ in
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    pkgs.nixd
-    pkgs.luajitPackages.lua-lsp
-    pkgs.llvmPackages_12.clang-tools
-    pkgs.lua-language-server
-    pkgs.pyright
-    pkgs.nodePackages.typescript-language-server
-    pkgs.rust-analyzer
-    # pkgs.bash-language-server
-    pkgs.gopls
-    pkgs.emmet-language-server
-    pkgs.htmx-lsp
-    pkgs.stylua
-    pkgs.gofumpt
-    pkgs.prettierd
-    pkgs.nixfmt-rfc-style
-    pkgs.fishPlugins.done
-    pkgs.fishPlugins.fzf
-    pkgs.fishPlugins.forgit
-    pkgs.fishPlugins.hydro
-    pkgs.fishPlugins.grc
-    pkgs.grc
-    pkgs.bat
-    pkgs.gh
-  ];
-
+ 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
@@ -75,10 +57,7 @@ in
   #
   #  /etc/profiles/per-user/filip/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    VISUAL = "nvim";
-  };
+  
   programs.fzf = {
     enable = true;
     # emableBashIntegration = true;
