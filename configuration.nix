@@ -22,7 +22,7 @@ in
     ./packages/system/sh.nix
     ./config/boot.nix
     ./config/network.nix
-    ./config/xserver.nix
+    ./config/xserver/xserver.nix
     ./config/sound.nix
     ./config/users.nix
   ]; 
