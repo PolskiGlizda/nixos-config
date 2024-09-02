@@ -8,9 +8,11 @@ let
   unstable = pkgs-unstable;
 in
 {
-  home.packages = with pkgs; [
-    gh
-    grc
-    bat
-  ];
+  home.packages =
+    (with pkgs; [
+      gh
+      grc
+      bat
+    ])
+    ++ (with unstable; [ lazygit ]);
 }

@@ -33,7 +33,7 @@
         FilLAP = lib.nixosSystem {
           inherit system;
           specialArgs = {
-            pkgs-stable = import nixpkgs {
+            pkgs = import nixpkgs {
               inherit system;
               config = {
                 allowUnfree = true;
@@ -48,6 +48,10 @@
         filip = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [ ./home.nix ];
+          extraSpecialArgs = {
+            inherit pkgs-unstable;
+          };
+
         };
       };
     };
